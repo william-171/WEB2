@@ -1,0 +1,33 @@
+﻿@model SistemaWeb_Huillca.Models.Usuario
+@{
+    ViewBag.Title = "Ver";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ver</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/Usuario/Index">Usuario</a></li>
+    <li> / </li>
+    <li class="active">@Model.nombre</li>
+</ol>
+
+<div class="card card-body">
+    <div class="card-header">Informacion de Usuario</div>
+    <div class=" card-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.usuario_id</dd>
+            <dt>Usuario</dt>
+            <dd>@Model.nombre</dd>
+            <dt>Apellidos y Nombres</dt>
+            <dd>@Model.Docente.apellido , @Model.Docente.nombre</dd>
+            <dt>Nivel</dt>
+            <dd>@Model.nivel</dd>
+            <dt>Avatar</dt>
+            <dd>@Model.avatar</dd>
+            <dt>Estado</dt>
+            <dd>@(Model.estado == "A" ? "Activo" : "Inactivo")</dd>
+        </dl>
+    </div>
+</div>

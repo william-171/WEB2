@@ -1,0 +1,181 @@
+﻿
+@{
+    Layout = null;
+    string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    SistemaWeb_Huillca.Models.Usuario usu = new SistemaWeb_Huillca.Models.Usuario().Obtener(SistemaWeb_Huillca.Models.SessionHelper.GetUser());
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema MVC</title>
+    <!--Boostrap-->
+    <link href="~/Essest/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Essest/css/bootstrap.css" rel="stylesheet" />
+    <!--datables-->
+    <link href="~/Essest/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/Essest/DataTables/css/dataTables.semanticui.min.css" rel="stylesheet" />
+    <link href="~/Essest/DataTables/css/dataTables.foundation.min.css" rel="stylesheet" />
+    <!--Jquery-->
+    <script src="~/Essest/js/jquery-3.5.1.min.js"></script>
+
+
+</head>
+<body>
+ @if(controlador != "login")
+    {
+    
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Sistema Web</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mantenimiento
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Usuario/Index">Usuario</a>
+                        <a class="dropdown-item" href="~/Docente/Index">Docente</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="~/Semestre/Index">Semestre</a>
+                        <a class="dropdown-item" href="#">Usuario</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Operaciones/Index">Consulta de Operaciones</a>
+                        <a class="dropdown-item" href="#">Operaciones</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Persona</a>
+                        <a class="dropdown-item" href="#">Usuario</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reportes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/Operaciones/Index">Reporte de Operaciones</a>
+                        <a class="dropdown-item" href="#">Operaciones</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Persona</a>
+                        <a class="dropdown-item" href="#">Usuario</a>
+                    </div>
+                </li>
+            </ul>
+
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        <img id="user-pic" src="~/Uploads/@usu.avatar" width="40" height="40" />
+                        <b>Bienvenido: </b>@usu.Docente.nombre, @usu.Docente.apellido <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="~/Perfil/index">Perfil de Usuario</a>
+                        <a class="dropdown-item" href="~/Login/logout">Cerrar Sesi�n</a>
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+   }
+    <div class="container">
+        <h1 class="jumbotron">
+            Sistema MVC
+        </h1>
+        @RenderBody()
+    </div>
+    <!--Boostrap-->
+    <script src="~/Essest/js/bootstrap.js"></script>
+    <script src="~/Essest/js/bootstrap.min.js"></script>
+
+    <!--datatables-->
+    <script src="~/Essest/DataTables/datatables.min.js"></script>
+    @*<script src="~/Essest/DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Essest/DataTables/js/jquery.dataTables.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.semanticui.min.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.semanticui.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.jqueryui.min.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.jqueryui.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.foundation.min.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.foundation.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.bootstrap4.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Essest/DataTables/js/dataTables.bootstrap.js"></script>*@
+    <!--login y seguridad-->
+    <script src="~/Essest/js/jquery.form.js"></script>
+    <script src="~/Essest/js/ini.js"></script>
+    <script src="~/Essest/js/jquery.validate.min.js"></script>
+    <script src="~/Essest/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#DataTableVertical').DataTable({
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+
+        $(document).ready(function () {
+            $('#DataTableHorizontal').DataTable({
+                "scrollX": true
+            });
+        });
+
+        $(document).ready(function () {
+            $('#DataTableDefault').DataTable({
+                "order": [[3, "desc"]]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#DataTableLanguage').DataTable({
+                "aLengthMenu": [[2, 5, 10, 25, 50, 100, 200, -1], [2, 5, 10, 15, 25, 50, 100, 200, -1]],
+                "aDestroy": true,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ Registro por pagina",
+                    "zeroRecords": "Nothing found - sorry",
+                    "info": "Estamos en pagina _PAGE_ of _PAGES_",
+                    
+                    "infoEmpty": "No se encontraron registros",
+                    "sSearch": "Buscar",
+
+                    "oPaginate": {
+                        "sPrevious": "Anterior",
+                        "sNext":"Siguiente"
+                    },
+                    
+                    "infoFiltered": "(filtered from _MAX_ total records)"
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@model List<SistemaWeb_Huillca.Models.Semestre>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 class="page-header">
+    Gestion de Semestre
+    <br /><br />
+    <a href="~/Semestre/AgregarEditar/" class="btn btn-success float-right">Nuevo Registro</a>
+    <br /><br />
+</h2>
+@using (Html.BeginForm("Index", "Semestre", FormMethod.Post, new { criterio = "Frm-buscar" }))
+{
+    <div class="text-left">
+        @Html.Label("Buscar: ")
+        @Html.TextBox("Criterio")
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+}
+<br /><br />
+<table>
+    <thead>
+        <tr>
+            <th style="width: 50px;">Id</th>
+            <th style="width: 120px;">Nombres</th>
+            <th style="width: 120px;">Anio</th>
+            <th style="width: 120px;">Estado</th>
+            <th style="width: 350px;">Acciones</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <th>@(m.semestre_id)</th>
+                <th>@(m.nombre)</th>
+                <th>@(m.anio)</th>
+                <th>@(m.estado)</th>
+                <th>
+                    <a href="~/Semestre/Ver/@m.semestre_id" class="btn btn-xs btn-warning">Detalles</a>
+                    <a href="~/Semestre/AgregarEditar/@m.semestre_id" class="btn btn-xs btn-primary">Modificar</a>
+                    <a onclick="return confirm('¿Estas seguro de eliminar registro?');" href="~/Semestre/Eliminar/@m.semestre_id" class="btn btn-xs btn-danger">Eliminar</a>
+
+
+                </th>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

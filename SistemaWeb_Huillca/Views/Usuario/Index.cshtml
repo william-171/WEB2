@@ -1,0 +1,56 @@
+﻿@model List<SistemaWeb_Huillca.Models.Usuario>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 class="page-header">
+    Gestion de Usuarios
+    <br /><br />
+    <a href="~/Usuario/AgregarEditar/" class="btn btn-success float-right">Nuevo Registro</a>
+    <br /><br />
+</h2>
+@using (Html.BeginForm("Index","Usuario",FormMethod.Post,new { criterio= "Frm-buscar"}))
+{
+    <div class="text-left">
+        @Html.Label("Buscar: ")
+        @Html.TextBox("Criterio")
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+}
+<br /><br />
+<table id="DataTableLanguage" class="table">
+    <thead>
+        <tr>
+            <th style="width: 50px;">Id</th>
+            <th style="width: 50px;">Apellidos y Nombres</th>
+            <th style="width: 120px;">Usuario</th>
+            <th style="width: 120px;">Nivel</th>
+            <th style="width: 70px;">Avatar</th>
+            <th style="width: 70px;">Estado</th>
+            <th style="width: 250px;">Acciones</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model)
+        {
+        <tr>
+            <th>@(m.usuario_id)</th>
+            <th>@(m.Docente.apellido +","+ m.Docente.nombre)</th>
+            <th>@(m.nombre)</th>
+            <th>@(m.nivel)</th>
+            <th>@(m.avatar)</th>
+            <th>@(m.estado)</th>
+            <th>
+                <a href="~/Usuario/Ver/@m.usuario_id" class="btn btn-xs btn-warning">Detalles</a>
+                <a href="~/Usuario/AgregarEditar/@m.usuario_id" class="btn btn-xs btn-primary">Modificar</a>
+                <a onclick="return confirm('¿Estas seguro de eliminar registro?');" href="~/Usuario/Eliminar/@m.usuario_id" class="btn btn-xs btn-danger">Eliminar</a>
+
+
+            </th>
+        </tr>
+        }
+    </tbody>
+
+</table>
